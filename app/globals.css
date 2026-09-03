@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-:root { --background: #0b1020; --foreground: #f8f7f2; --card: #121a2d; --card-foreground: #f8f7f2; --muted: #96a1ba; --line: #26314a; --amber: #f5a524; --indigo: #3730a3; --teal: #34c6aa; --coral: #fb7665; --paper: #faf8f1; --ink: #11182b; --radius: 1.25rem; }
+:root { --background: #ffffff; --foreground: #172033; --card: #f7f8fb; --card-foreground: #172033; --muted: #667085; --line: #e4e7ec; --amber: #f5a524; --indigo: #3730a3; --teal: #34c6aa; --coral: #fb7665; --paper: #ffffff; --ink: #11182b; --radius: 1.25rem; }
 @theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--card-foreground); --color-muted: var(--muted); --color-border: var(--line); --color-amber: var(--amber); --color-indigo: var(--indigo); --color-teal: var(--teal); --color-coral: var(--coral); --color-paper: var(--paper); --color-ink: var(--ink); --font-sans: var(--font-inter); --font-mono: var(--font-plex); }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-inter), sans-serif; }
@@ -24,5 +24,5 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 .landing-page .text-card-foreground { color: var(--card-foreground); }
 .container-shell { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
 .focus-ring:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
-.recharts-cartesian-grid-horizontal line { stroke: #26314a; stroke-dasharray: 3 5; }
-.recharts-text { fill: #96a1ba; }
+.recharts-cartesian-grid-horizontal line { stroke: var(--line); stroke-dasharray: 3 5; }
+.recharts-text { fill: var(--muted); }
