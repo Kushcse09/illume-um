@@ -1,14 +1,10 @@
 import { NextResponse } from 'next/server'
 
-const feedback = {
-  Math: { explanation: 'You are noticing that fractions are pieces of a whole. The key next step is making those pieces the same size before adding.', nextPrompt: 'Try the chocolate bar analogy to light the next spot.' },
-  Science: { explanation: 'You connected heat to movement. When water particles gain enough energy, they spread apart and escape as a gas.', nextPrompt: 'Imagine the particles as people at a concert to light the next spot.' },
-  Reading: { explanation: 'You are looking for the story’s big message. Strong readers connect repeated details to one clear main idea.', nextPrompt: 'Look for the detail that keeps coming back to light the next spot.' },
-} as const
+const feedback = { Math: ['Fractions are pieces of a whole.', 'A common denominator makes every piece the same size.', 'Dividing both parts by the same factor keeps the value unchanged.'], Science: ['Heat gives particles more energy.', 'Faster particles spread farther apart.', 'Evaporation is when surface particles escape into the air.'], Reading: ['The main idea connects repeated details.', 'Key details support the bigger message.', 'Theme is the lasting message, while main idea is what the text is mostly about.'] } as const
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => ({}))
-  const topic = body.topic in feedback ? body.topic as keyof typeof feedback : 'Math'
-  const copy = feedback[topic]
-  return NextResponse.json({ masteryScore: 72, overallStatus: 'In Progress', topic, glowSpots: [], explanation: copy.explanation, nextPrompt: copy.nextPrompt })
+  const body = await request.json().catch(() => ({})) as { topic?: string; questionIndex?: number }
+  const topic = body.topic === 'Science' || body.topic === 'Reading' ? body.topic : 'Math'
+  const questionIndex = Math.min(Math.max(Number(body.questionIndex) || 0, 0), 2)
+  return NextResponse.json({ masteryScore: Math.round(((questionIndex + 1) / 3) * 100), overallStatus: questionIndex === 2 ? 'Fundamentals clear' : 'In Progress', topic, questionIndex, explanation: feedback[topic][questionIndex], nextStep: questionIndex === 2 ? 'Diagnostic complete' : 'Ask the next follow-up on the same topic.' })
 }
