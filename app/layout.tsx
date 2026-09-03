@@ -1,49 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
+import { Fredoka, Inter, IBM_Plex_Mono } from 'next/font/google'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+const fredoka = Fredoka({ variable: '--font-fredoka', subsets: ['latin'] })
+const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
+const plex = IBM_Plex_Mono({ variable: '--font-plex', subsets: ['latin'], weight: ['400', '500', '600'] })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  title: 'illume — Find the gap. Light the way.',
+  description: 'An AI diagnostic tutor that helps students explain what they know, so learning can meet them exactly where they are.',
 }
+export const viewport: Viewport = { colorScheme: 'dark', themeColor: '#0b1020', width: 'device-width', initialScale: 1 }
 
-export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en">
-      <body className="antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
-    </html>
-  )
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en" className="bg-background"><body className={`${fredoka.variable} ${inter.variable} ${plex.variable} antialiased`}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }
