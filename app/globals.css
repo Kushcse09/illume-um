@@ -13,6 +13,15 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 ::selection { background: var(--amber); color: var(--ink); }
 .light-flow { background: var(--paper); color: var(--ink); min-height: 100vh; }
+.landing-page { --background: #ffffff; --foreground: #172033; --card: #f7f8fb; --card-foreground: #172033; --muted: #667085; --line: #e4e7ec; background: var(--background); color: var(--foreground); }
+.landing-page .text-ink { color: var(--ink); }
+.landing-page .bg-ink { background: var(--ink); }
+.landing-page .border-border { border-color: var(--line); }
+.landing-page .bg-background { background: var(--background); }
+.landing-page .text-foreground { color: var(--foreground); }
+.landing-page .text-muted { color: var(--muted); }
+.landing-page .bg-card { background: var(--card); }
+.landing-page .text-card-foreground { color: var(--card-foreground); }
 .container-shell { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
 .focus-ring:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 .recharts-cartesian-grid-horizontal line { stroke: #26314a; stroke-dasharray: 3 5; }

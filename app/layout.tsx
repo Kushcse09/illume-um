@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'illume — Find the gap. Light the way.',
   description: 'An AI diagnostic tutor that helps students explain what they know, so learning can meet them exactly where they are.',
 }
-export const viewport: Viewport = { colorScheme: 'dark', themeColor: '#0b1020', width: 'device-width', initialScale: 1 }
+export const viewport: Viewport = { colorScheme: 'light', themeColor: '#ffffff', width: 'device-width', initialScale: 1 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en" className="bg-background"><body className={`${fredoka.variable} ${inter.variable} ${plex.variable} antialiased`}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
